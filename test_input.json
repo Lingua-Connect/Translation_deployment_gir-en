@@ -1,0 +1,9 @@
+{
+  "input": {
+    "text": "Hello, how are you today?",
+    "source_lang": "sw",
+    "target_lang": "en",
+    "max_length": 150,
+    "num_beams": 5
+  }
+}

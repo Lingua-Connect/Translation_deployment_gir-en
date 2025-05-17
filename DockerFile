@@ -1,0 +1,26 @@
+FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y git
+
+RUN pip install transformers==4.49.0
+
+# Install Python dependencies
+RUN pip install sentencepiece protobuf sacremoses
+
+# Set up working directory
+WORKDIR /
+
+RUN pip install --no-cache-dir runpod
+# Copy your application code
+COPY rp_handler.py /
+
+# Pre-download the model to speed up cold starts
+# RUN python -c "from transformers import AutoModelForSeq2SeqLM, AutoTokenizer; \
+#     model = AutoModelForSeq2SeqLM.from_pretrained('Lingua-Connect/backup'); \
+#     tokenizer = AutoTokenizer.from_pretrained('Lingua-Connect/backup')"
+
+# Set the entry point
+EXPOSE 8000
+
+CMD ["python3", "-u", "rp_handler.py"]
