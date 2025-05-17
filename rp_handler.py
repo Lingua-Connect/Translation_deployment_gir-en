@@ -3,8 +3,8 @@ import torch
 import runpod
 
 # Load the model and tokenizer from Hugging Face Hub
-model = AutoModelForSeq2SeqLM.from_pretrained("JMwagunda/ENG-GIR-MODEL")
-tokenizer = AutoTokenizer.from_pretrained("JMwagunda/ENG-GIR-MODEL")
+model = AutoModelForSeq2SeqLM.from_pretrained("JMwagunda/GIR-ENG-MODEL")
+tokenizer = AutoTokenizer.from_pretrained("JMwagunda/GIR-ENG-MODEL")
 
 # Move the model to the appropriate device
 device = "cuda" if torch.cuda.is_available() else "cpu"
